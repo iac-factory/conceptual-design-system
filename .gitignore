@@ -76,3 +76,5 @@ storybook-static
 ./index.js
 
 distribution
+
+.DS_Store
