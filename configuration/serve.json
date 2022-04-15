@@ -1,0 +1,7 @@
+{
+    "cleanUrls": true,
+    "directoryListing": false,
+    "trailingSlash": false,
+    "cors": true,
+    "noClipboard": true
+}
