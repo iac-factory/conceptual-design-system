@@ -15,7 +15,7 @@
         "library": "lerna run library --stream",
         "documentation": "lerna run build-documentation",
         "publish-documentation": "lerna run build-documentation",
-        "bootstrap": "lerna bootstrap --nohoist ./node_modules",
+        "bootstrap": "npx lerna bootstrap --nohoist ./node_modules",
         "list": "lerna exec -- ls"
     }
 }
