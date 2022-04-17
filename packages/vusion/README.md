@@ -1,80 +1,10 @@
 # [UI-Template] #
 
-The Cloud Dashboard & User Interface for *Cloud-Technology LLC.*
-
-[[_TOC_]]
-
-## Overview ##
-
-- [x] Update to `react-dom-router` Beta
-- [x] Implement POC for [`defaultProps` JSX](https://reactjs.org/docs/typechecking-with-proptypes.html)
-    - ~~Update Documentation to Reflect Understanding~~
-- [x] Install & Document [`react-devtools-core`](https://github.com/facebook/react/tree/main/packages/react-devtools)
-    - https://www.npmjs.com/package/react-devtools-core
-- [ ] Review & Document an Applicable use-case for a Merged, Shallow `useState` (Probably Login)
-    - https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly
-
-- [ ] Update BreadCrumbs to use
-
-```javascript
-function Course() {
-    let {id} = useParams < "id" > ();
-
-    return (
-            <div>
-                <h2>
-                    Welcome to the {id!.split("-").map(capitalizeString).join(" ")} course!
-                </h2>
-
-                <p>This is a great course. You're gonna love it!</p>
-
-                <Link to="/courses">See all courses</Link>
-            </div>
-    );
-}
-
-function capitalizeString(s: string): string {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-}
-```
-
-Cloud-Technology's Dashboard is a set of user-friendly utilities that interface RESTful HTTP endpoints & related database CRUD actions. The User-Interface is consistent in visibility, styling, but above all else, ***functionality***.
-
-As a *Single-Page-Application* (*SPA*), the client-sided front-end can remain functional so long as the API & dependent endpoints remain online -- largely a benefit from micro-serviced architecture(s).
-
-## Usage ##
-
-### Setup & Installation ###
-
-```bash
-npm run setup
-```
-
-### Development ###
-
-```bash
-npm run start
-```
-
-### CI-CD ###
-
 <details>
 
 <summary>
     <strong>
-        Runbook
-    </strong>
-</summary>
-
----
-
-#### Build ####
-
-<details>
-
-<summary>
-    <strong>
-        Production
+        Useful Commands
     </strong>
 </summary>
 
@@ -114,115 +44,7 @@ REACT_APP_API_ENDPOINT="${REACT_APP_API_ENDPOINT}"
 REACT_APP_WS_ENDPOINT="${REACT_APP_WS_ENDPOINT}"
 EOF
 
-npm run build --production
 ```
-
-</details>
-
-#### Archive ####
-
-<details>
-
-<summary>
-    <strong>
-        Registry
-    </strong>
-</summary>
-
-<br/>
-
-```bash
-export VERSION="$(printf "%s" "$(cat VERSION)")"
-
-export BASE="${CI_REGISTRY_IMAGE}/${CONTAINER}"
-export TARGET="${BASE}/${VERSION}"
-export LATEST="${TARGET}:latest"
-
-docker build --no-cache --tag "${TARGET}" --tag "${LATEST}" .
-docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
-docker push "${TARGET}" && docker push "${LATEST}"
-```
-
-</details>
-
-#### Distribution ####
-
-<details>
-
-<summary>
-    <strong>
-        ECR
-    </strong>
-</summary>
-
-<br/>
-
-```bash
-export VERSION="$(printf "%s" "$(cat VERSION)")"
-
-export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
-export AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}"
-
-export BASE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${CONTAINER}"
-export TARGET="${BASE}:${VERSION}"
-export LATEST="${BASE}:latest"
-
-docker build --no-cache --tag "${TARGET}" --tag "${LATEST}" .
-
-export URL="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-export PASSWORD="$(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})"
-
-aws ecr create-repository --repository-name "${CONTAINER}" --region "${AWS_DEFAULT_REGION}" || true
-printf "%s\n" "${PASSWORD}" | docker login "${URL}" --username AWS --password-stdin
-
-docker push "${TARGET}" && docker push "${LATEST}"
-```
-
-</details>
-
-#### Deployment ####
-
-<details>
-
-<summary>
-    <strong>
-        Stack
-    </strong>
-</summary>
-
-<br/>
-
-```bash
-aws cloudformation create-stack --stack-name "${STACK}" \
-    --template-body "file://Stack.Yaml"
-
-# --> Update
-
-aws cloudformation update-stack --stack-name "${STACK}" \
-    --template-body "file://Stack.Yaml"
-
-# --> Waiter(s)
-
-aws cloudformation wait stack-create-complete \
-    --stack-name "${STACK}" || true
-
-aws cloudformation wait stack-delete-complete \
-    --stack-name "${STACK}" || true
-
-aws cloudformation wait stack-exists \
-    --stack-name "${STACK}" || true
-
-aws cloudformation wait stack-import-complete \
-    --stack-name "${STACK}" || true
-
-aws cloudformation wait stack-rollback-complete \
-    --stack-name "${STACK}" || true
-
-aws cloudformation wait stack-update-complete \
-    --stack-name "${STACK}" || true
-```
-
-</details>
 
 </details>
 
@@ -363,8 +185,3 @@ openssl pkcs12 -export -out "Development.pfx" -inkey "Development.key" -in "Deve
 ```
 
 </details>
-
-## Contributors ##
-
-- Jacob ([`HeckingEdgy`](noreply@cloudhybrid.io))
-- Xander ([`The Duck-Byte`](noreply@cloudhybrid.io)) 
