@@ -4,13 +4,10 @@ import "./SCSS/Card.scss";
 
 import { default as List } from "./List";
 
-import Content from "./Test.mdx";
-
 export const Page = ({}) => {
     return (
         <>
             <List rows={ 3 }/>
-            <Content/>
         </>
     );
 };
