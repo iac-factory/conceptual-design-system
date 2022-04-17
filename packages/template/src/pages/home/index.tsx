@@ -4,12 +4,17 @@ const Content = Split( () => import("./../../components/page") );
 
 interface Properties {name?: string;}
 
+import Button from "./../../components/button";
+
 import Static from "./index.mdx";
 
 const Page = ( properties: Properties = { name: "Home" } ) => {
     const View = () => {
         return (
-            <Static/>
+            <>
+                <Button/>
+                <Static/>
+            </>
         );
     };
 
