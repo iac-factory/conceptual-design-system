@@ -117,8 +117,11 @@
             "mdx/language-mapper": {}
         },
         "rules": {
+            "import/first": 0,
+            "no-async-promise-executor": 0,
             "no-case-declarations": 0,
             "react/jsx-no-undef": 0,
+            "mdx/no-unused-expressions": 0,
             "import/no-anonymous-default-export": 0,
             "@typescript-eslint/no-var-requires": 0,
             "import/no-webpack-loader-syntax": 0,
