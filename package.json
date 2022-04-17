@@ -4,31 +4,18 @@
     "repository": "https://github.com/iac-factory/conceptual-design-system.git",
     "description": "...",
     "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
     "devDependencies": {
-        "@storybook/addons": "^6.4.22",
-        "@storybook/preset-scss": "^1.0.3",
-        "babel-loader": "8.1.0",
-        "css-loader": "^6.7.1",
-        "lerna": "^4.0.0",
-        "sass": "^1.50.0",
-        "sass-loader": "^12.6.0",
-        "style-loader": "^3.3.1"
-    },
-    "resolutions": {
-        "babel-loader": "^8.1.0"
+        "lerna": "^4.0.0"
     },
     "scripts": {
         "story": "lerna run storybook --stream",
-        "library": "lerna run library --stream && lerna run build-storybook",
-        "prestart": "npm run build",
+        "postinstall": "npm run bootstrap",
+        "template": "lerna run template --stream",
+        "vusion": "lerna run vusion --stream",
+        "library": "lerna run library --stream",
         "documentation": "lerna run build-documentation",
         "publish-documentation": "lerna run build-documentation",
-        "start": "lerna run start --stream",
-        "lock": "lerna clean --yes && rm -f package-lock.json",
-        "clean": "npm run lock && lerna exec \"rm -f package-lock.json\"",
+        "bootstrap": "lerna bootstrap --nohoist ./node_modules",
         "list": "lerna exec -- ls"
     }
 }

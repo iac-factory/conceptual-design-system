@@ -1,10 +1,10 @@
 import React, { Suspense, lazy as Split } from "react";
 
-import Static from "./index.mdx";
-
 const Content = Split( () => import("./../../components/page") );
 
 interface Properties {name?: string;}
+
+import Static from "./index.mdx";
 
 const Page = ( properties: Properties = { name: "Home" } ) => {
     const View = () => {
