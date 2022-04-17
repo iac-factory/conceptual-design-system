@@ -7,7 +7,8 @@ const pastel = {
         "display": "block",
         "overflowX": "auto",
         "padding": "0.5em",
-        "color": "#ABB2BF"
+        "color": "#ABB2BF",
+        "background": "#282C34"
     },
     "hljs-comment": {
         "color": "#5C6370",
@@ -130,7 +131,7 @@ const Component = () => {
             />
         ) : (
             <code>
-                { children }
+                children
             </code>
         )
     };

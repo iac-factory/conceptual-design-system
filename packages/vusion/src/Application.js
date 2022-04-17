@@ -14,9 +14,6 @@ import { Authorizer, JWT, Validate } from "./components/Authenticate";
 
 import { default as Home } from "./pages/Home";
 
-import { default as Documentation } from "./pages/Documentation"
-
-
 import "./Application.scss";
 
 const Application = () => {
@@ -65,7 +62,7 @@ const Application = () => {
     const Blog2 = Import(() => import("./pages/Blog-2"));
     const Blog3 = Import(() => import("./pages/Blog-3"));
 
-//    const Documentation = Import(() => import("./pages/Documentation"));
+    const Documentation = Import(() => import("./pages/Documentation"));
 
     const Dashboard = {
         Index: Import(() => import("./pages/Dashboard/Pages/Index")),
