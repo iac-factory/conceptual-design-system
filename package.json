@@ -10,6 +10,7 @@
     "scripts": {
         "story": "lerna run storybook --stream",
         "postinstall": "npm run bootstrap",
+        "start": "lerna exec \"npm run start\" --stream",
         "template": "lerna run template --stream",
         "vusion": "lerna run vusion --stream",
         "library": "lerna run library --stream",
