@@ -7,10 +7,13 @@ import { default as Pipelines } from "./Pipelines";
 
 import { default as Template } from "./Template";
 
+import { default as Documentation } from "./Documentation";
+
 import { default as Development } from "./Development";
 
 const Module = {
     Home,
+    Documentation,
     Development,
     GitHub,
     GitLab,

@@ -6,14 +6,14 @@ const Content = ({ children }) => {
     return (
         <Suspense fallback={ null }>
             <div className={ Styles.content }>
-                {
-                    children
-                }
+                { children }
             </div>
         </Suspense>
     );
 };
 
 export { Content };
+
+export default Content;
 
 export * from "./npm";

@@ -7,8 +7,7 @@ const pastel = {
         "display": "block",
         "overflowX": "auto",
         "padding": "0.5em",
-        "color": "#ABB2BF",
-        "background": "#282C34"
+        "color": "#ABB2BF"
     },
     "hljs-comment": {
         "color": "#5C6370",
@@ -117,22 +116,34 @@ const pastel = {
     }
 };
 
-const Code = ({ className, ... properties }) => {
-    const match = /language-(\w+)/.exec(className || "");
-    console.log(properties, className);
-    return <Highlighter
-        children={ String(properties).replace(/\n$/, "") }
-        style={ pastel }
-        language={ match[1] }
-        PreTag="div"
-        { ... properties }
-    />;
-};
-
-
 const Component = () => {
-    return (<Content components={{ Code }}/>)
+    const code = ({ className, children, ... props }) => {
+        const match = /language-(\w+)/.exec(className || "");
+        console.log(props, className);
+        return (match?.[1]) ? (
+            <Highlighter
+                children={ String(children).replace(/\n$/, "") }
+                style={ pastel }
+                language={ match[1] ?? null }
+                PreTag="div"
+                { ... props }
+            />
+        ) : (
+            <code>
+                { children }
+            </code>
+        )
+    };
+
+    /// Interesting... Components has to be := an html tag <code> for example
+    const Target = () => (<Content components={ { code } }/>);
+
+    return (
+        <div>
+            <Target/>
+        </div>
+    );
 };
 
-export { Component };
+export { Component as Configuration };
 export default Component;
