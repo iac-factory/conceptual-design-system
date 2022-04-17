@@ -103,7 +103,7 @@ const Application = () => {
                                     } path={ "/login" }
                                 />
 
-                                <Route path={ "/documentation" } element={ (<Documentation/>) }/>
+                                <Route path={ "/documentation" } element={ (<Documentation description={"Loading Documentation Tree ..."} timeout={1000}/>) }/>
 
                                 { /* Authorized Endpoint(s) */ }
 

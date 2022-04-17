@@ -3,6 +3,8 @@ import Styles from "./index.module.scss";
 
 import { Suspense } from "react";
 
+import { NPM } from "./npm";
+
 /***
  * Abstract Functional Component for Nested Directories (MDX) related Usage
  * ---
@@ -186,6 +188,10 @@ const Mutators = {
 export { Content };
 export { Mutators };
 
-export default Content;
+const Page = () => {
+    return (
+        <NPM.Configuration/>
+    )
+}
 
-export * from "./npm";
+export default Page;

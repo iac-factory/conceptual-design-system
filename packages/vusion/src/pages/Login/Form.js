@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 import { Button, Form, FormGroup, InlineLoading, TextInput } from "@carbon/react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import { default as Types } from "./../../components/Types";
 

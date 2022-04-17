@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 import {
     Grid, Column
 } from "@carbon/react";
@@ -21,12 +19,6 @@ const Component = (props) => {
             </Column>
         </Grid>
     );
-};
-
-Component.defaultProps = {};
-
-Component.propTypes = {
-    Authorizer: PropTypes.array.isRequired
 };
 
 export default Component;

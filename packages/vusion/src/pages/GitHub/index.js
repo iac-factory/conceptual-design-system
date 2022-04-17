@@ -1,7 +1,5 @@
 import Styles from "./SCSS/Index.module.scss";
 
-import PropTypes from "prop-types";
-
 import {
     Grid, Column
 } from "@carbon/react";
@@ -34,24 +32,6 @@ const Component = (props) => {
             </Column>
         </Grid>
     );
-};
-
-Component.defaultProps = {
-    timeout: 1250
-};
-
-Component.propTypes = {
-    /**
-     * Forced Delay during Transition (Units in ms)
-     */
-
-    timeout: PropTypes.number.isRequired,
-
-    /***
-     * Loading Screen Context
-     */
-
-    description: PropTypes.string.isRequired
 };
 
 export default Component;

@@ -1,17 +1,34 @@
 import Styles from "./index.module.scss";
 
-import { Column } from "@carbon/react";
-import { Grid } from "@carbon/react";
+import {
+    Grid, Column
+} from "@carbon/react";
 
-import { NPM } from "./MDX"
+import React, {
+    Suspense, lazy as Import
+} from "react";
 
-const Component = () => {
+import { default as Loader } from "./../../components/Loader";
+
+const Component = (props) => {
+    const {
+        timeout,
+        description,
+        ... Properties
+    } = props;
+
+    console.debug("[Debug] Unassigned Properties", Properties);
+
+    const Page = Import(() => import("./MDX"));
+
     return (
-        <Grid className={ Styles.grid }>
-            <Column lg={ 16 }>
-                <div className={ Styles.page }>
-                    <NPM.Configuration/>
-                </div>
+        <Grid className={ Styles.component }>
+            <Column lg={ 16 } md={ 8 } sm={ 4 }>
+                <Suspense fallback={ (<Loader description={ description } timeout={ timeout }/>) }>
+                    <Loader description={ description } timeout={ timeout }>
+                        <Page/>
+                    </Loader>
+                </Suspense>
             </Column>
         </Grid>
     );
