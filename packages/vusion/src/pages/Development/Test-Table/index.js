@@ -1,7 +1,5 @@
 import Styles from "./SCSS/Index.module.scss";
 
-import PropTypes from "prop-types";
-
 import {
     Grid, Column
 } from "@carbon/react";

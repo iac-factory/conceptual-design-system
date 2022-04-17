@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Request = require("axios");
-const Adapter = require("axios-cache-adapter");
+const Adapter = require("axios-cache-interceptor");
 const Forage = require("localforage");
 
 const STORE = "Pseudo-Data";
@@ -33,16 +33,12 @@ const Cache = Adapter.setupCache({
 });
 
 const API = Request.create({
-    adapter: Cache.adapter,
+    adapter: Cache,
     cache: Cache,
     cancelToken: Cancellation.token
 });
 
-class AIO extends Object {
-    constructor(props) {
-        super(props);
-    };
-
+class AIO {
     static URL = process.env.REACT_APP_API_ENDPOINT + "/API/Awaitable";
 
     static Resolve = () => {
@@ -82,7 +78,7 @@ class AIO extends Object {
                 return (() => {
                     ignore = true;
                 });
-            }, [URL]);
+            }, []);
             return {data, loading, error};
         };
         return Query(URL);

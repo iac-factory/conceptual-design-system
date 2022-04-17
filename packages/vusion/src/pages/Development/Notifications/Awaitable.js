@@ -1,5 +1,3 @@
-import { default as Types } from "prop-types";
-
 import React, { useState, useEffect } from "react";
 
 import { SkeletonPlaceholder } from "@carbon/react";
@@ -8,11 +6,7 @@ import * as Query from "./Query";
 
 import {ToastNotification} from "carbon-components-react";
 
-import io from "./Index.module.scss";
-
-const Style = () => {
-    return Object.values(io).pop();
-};
+import io from "./SCSS/Index.module.scss";
 
 const Component = ({ Evaluation }) => {
     const [awaiting, setAwaiting] = useState(true);
@@ -28,7 +22,7 @@ const Component = ({ Evaluation }) => {
             default:
                 return () => setAwaiting(null);
         }
-    }, []);
+    }, [awaiting]);
 
     const Awaitable = () => {
         const Subtitle = () => (
@@ -36,7 +30,7 @@ const Component = ({ Evaluation }) => {
         );
 
         return (
-            <div className={Style()}>
+            <div className={io.component}>
                 <ToastNotification
                     caption="00:00:00 AM"
                     iconDescription="Close Button Description"
@@ -54,13 +48,9 @@ const Component = ({ Evaluation }) => {
         );
     };
 
-    return (Handler.Waiter && Handler.Waiter !== false || awaiting === true)
+    return ((Handler.Waiter && Handler.Waiter !== false) || awaiting === true)
         ? (<SkeletonPlaceholder/>) : (<Awaitable/>);
 
-};
-
-Component.propTypes = {
-    Evaluation: Types.any
 };
 
 export default Component;

@@ -59,8 +59,6 @@ const Application = () => {
     const Error = Import(() => import("./pages/Error/Test.js"));
 
     const Blog = Import(() => import("./pages/Blog"));
-    const Blog2 = Import(() => import("./pages/Blog-2"));
-    const Blog3 = Import(() => import("./pages/Blog-3"));
 
     const Documentation = Import(() => import("./pages/Documentation"));
 
@@ -90,9 +88,6 @@ const Application = () => {
                                 <Route path={ "/blog/:category" } element={ (<Blog description={ "Loading Blog Article(s) Category ..." }/>) }/>
                                 <Route path={ "/blog/:category/:subcategory" } element={ (<Blog description={ "Loading Blog Article(s) Subcategory ..." }/>) }/>
                                 <Route path={ "/blog/:category/:subcategory/:article" } element={ (<Blog description={ "Loading Blog Article ..." }/>) }/>
-
-                                <Route path={ "/blog-2" } element={ (<Blog2 description={ "Loading Blog Article(s) ..." }/>) }/>
-                                <Route path={ "/blog-3" } element={ (<Blog3 description={ "Loading Blog Article(s) ..." }/>) }/>
 
                                 <Route path={ "/error" } element={ (<Error/>) }/>
                                 <Route
