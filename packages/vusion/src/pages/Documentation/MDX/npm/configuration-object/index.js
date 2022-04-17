@@ -7,14 +7,14 @@ const pastel = {
         "display": "block",
         "overflowX": "auto",
         "padding": "0.5em",
-        "color": "#ABB2BF"
+        "color": "#FFFFFF"
     },
     "hljs-comment": {
         "color": "#5C6370",
         "fontStyle": "italic"
     },
     "hljs-quote": {
-        "color": "#5C6370",
+        "color": "#FFFFFF",
         "fontStyle": "italic"
     },
     "hljs-doctag": {
