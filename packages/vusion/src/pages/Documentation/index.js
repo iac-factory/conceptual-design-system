@@ -3,14 +3,14 @@ import Styles from "./index.module.scss";
 import { Column } from "@carbon/react";
 import { Grid } from "@carbon/react";
 
-import { Configuration } from "./MDX/npm/configuration-object"
+import { NPM } from "./MDX"
 
 const Component = () => {
     return (
         <Grid className={ Styles.grid }>
             <Column lg={ 16 }>
                 <div className={ Styles.page }>
-                    <Configuration/>
+                    <NPM.Configuration/>
                 </div>
             </Column>
         </Grid>

@@ -1,21 +1,16 @@
 import { lazy } from "react";
 
-//import { Configuration } from "..";
+import { Content } from "..";
 
-import { Configuration } from "./configuration-object";
-
-//const Configuration = () => {
-//    const Component = lazy(() => import("./configuration-object"));
-//    return (
-//        <Content children={(<Component/>)}/>
-//    )
-//};
+const Configuration = () => {
+    const Component = lazy(() => import("./configuration-object"));
+    return (
+        <Content children={(<Component/>)}/>
+    )
+};
 
 const NPM = {
-    Configuration: (
-
-            <Configuration/>
-    )
+    Configuration
 };
 
 export { NPM };
