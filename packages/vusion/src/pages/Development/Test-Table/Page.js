@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 
 import { default as Table } from "./Table.js";
 
@@ -25,7 +24,7 @@ const Page = () => {
         }
 
         Await().finally();
-    }, []);
+    }, [awaiting]);
 
     switch ( awaiting ) {
         case true: {
@@ -38,7 +37,7 @@ const Page = () => {
 
         default: {
             console.debug("[Debug]", "Awaitable", awaiting);
-            
+
             console.debug("[Debug]", "Waiter has Successfully Resolved");
 
             return (awaiting === false) && (

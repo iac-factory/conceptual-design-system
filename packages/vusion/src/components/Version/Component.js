@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Link } from "@carbon/react";
-
-const Year = new Date().getFullYear();
-
-const Ignore = () => true;
 
 import { default as Build } from "./../../Version.js";
 
 import { default as Modal } from "./../Modal/Manager";
+
+import "./SCSS/Index.scss";
+import * as Styles from "./SCSS/Index.module.scss";
 
 const Legal = () => (
     <>
@@ -18,10 +16,11 @@ const Legal = () => (
     </>
 );
 
-import "./SCSS/Index.scss";
-import * as Styles from "./SCSS/Index.module.scss";
+const Year = new Date().getFullYear();
 
-const Component = ({ version, state }) => {
+const Ignore = () => true;
+
+const Component = ({ state }) => {
     //    window.onerror = Ignore;
 
     return (
@@ -89,15 +88,6 @@ const Component = ({ version, state }) => {
     //        </>
     //)
 
-};
-
-Component.defaultProps = {
-    version: Build
-};
-
-Component.propTypes = {
-    version: PropTypes.string,
-    state: PropTypes.any
 };
 
 export default Component;

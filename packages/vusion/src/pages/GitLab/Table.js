@@ -99,11 +99,7 @@ const Component = ({ Data, Headers, State }) => {
 
     const Projects = [];
 
-    const Total = (
-        Data
-    ) ? Data?.length : 0;
-
-    Data.forEach((Repository, Index) => React.useMemo(() => {
+    Data = Data.map((Repository, Index) => {
         Projects[Index] = {
             id: String(Index),
             disabled: false,
@@ -117,7 +113,8 @@ const Component = ({ Data, Headers, State }) => {
             URL: (Repository.web_url !== null) ? String(Repository.web_url) : "N/A",
             Data: Repository
         };
-    }, [ Data ]));
+        return Projects;
+    });
 
     return (
         <DataTable
@@ -145,21 +142,21 @@ const Component = ({ Data, Headers, State }) => {
                             <TableBatchActions { ... getBatchActionProps() }>
                                 <TableBatchAction
                                     id="Development-Table-JSON-Trigger-Button"
-                                    renderIcon={ DICO }
+                                    renderIcon={ <Data/> }
                                     onClick={ batchActionClick }
                                 >
                                     JSON
                                 </TableBatchAction>
                                 <TableBatchAction
                                     id="Development-Table-Metrics-Trigger-Button"
-                                    renderIcon={ Metrics }
+                                    renderIcon={ <ChartCombo/> }
                                     onClick={ batchActionClick }
                                 >
                                     Metrics
                                 </TableBatchAction>
                                 <TableBatchAction
                                     id="Development-Table-Download-Trigger-Button"
-                                    renderIcon={ CSV }
+                                    renderIcon={ <Refresh/> }
                                     onClick={ batchActionClick }
                                 >
                                     Download
@@ -206,7 +203,7 @@ const Component = ({ Data, Headers, State }) => {
                                     size="default"
                                     hasIconOnly={ true }
                                     onClick={ async () => await Refresh(State) }
-                                    renderIcon={ Reload }
+                                    renderIcon={ (<Renew/>) }
                                     tabIndex={ 0 }
                                     iconDescription={ "Reload Table & Clear Cache" }
                                     tooltipAlignment={ "center" }

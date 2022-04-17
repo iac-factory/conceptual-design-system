@@ -1,32 +1,38 @@
-$background: #161616;
-$background-active: rgba(141, 141, 141, 0.4);
-$background-brand: #0f62fe;
-$background-hover: rgba(141, 141, 141, 0.16);
-$background-inverse: #f4f4f4;
-$background-inverse-hover: #e8e8e8;
-$background-selected: rgba(141, 141, 141, 0.24);
-$background-selected-hover: rgba(141, 141, 141, 0.32);
+const background = {
+    "background": "#161616",
+    "background-active": "rgba(141, 141, 141, 0.4)",
+    "background-brand": "#0F62FE",
+    "background-hover": "rgba(141, 141, 141, 0.16)",
+    "background-inverse": "#F4F4F4",
+    "background-inverse-hover": "#E8E8E8",
+    "background-selected": "rgba(141, 141, 141, 0.24)",
+    "background-selected-hover": "rgba(141, 141, 141, 0.32)"
+}
 
-$border-disabled: rgba(141, 141, 141, 0.5);
-$border-interactive: #4589ff;
-$border-inverse: #f4f4f4;
-$border-strong-01: #6f6f6f;
-$border-strong-02: #8d8d8d;
-$border-strong-03: #a8a8a8;
-$border-subtle-00: #393939;
-$border-subtle-01: #393939;
-$border-subtle-02: #525252;
-$border-subtle-03: #6f6f6f;
-$border-subtle-selected-01: #525252;
-$border-subtle-selected-02: #6f6f6f;
-$border-subtle-selected-03: #8d8d8d;
+const border = {
+    "border-disabled": "rgba(141, 141, 141, 0.5)",
+    "border-interactive": "#4589ff",
+    "border-inverse": "#f4f4f4",
+    "border-strong-01": "#6f6f6f",
+    "border-strong-02": "#8d8d8d",
+    "border-strong-03": "#a8a8a8",
+    "border-subtle-00": "#393939",
+    "border-subtle-01": "#393939",
+    "border-subtle-02": "#525252",
+    "border-subtle-03": "#6f6f6f",
+    "border-subtle-selected-01": "#525252",
+    "border-subtle-selected-02": "#6f6f6f",
+    "border-subtle-selected-03": "#8d8d8d",
+}
 
-$field-01: #262626;
-$field-02: #393939;
-$field-03: #525252;
-$field-hover-01: #333333;
-$field-hover-02: #474747;
-$field-hover-03: #636363;
+const field = {
+    "field-01": "#262626",
+    "field-02": "#393939",
+    "field-03": "#525252",
+    "field-hover-01": "#333333",
+    "field-hover-02": "#474747",
+    "field-hover-03": "#636363",
+}
 
 $focus: #ffffff;
 $focus-inset: #161616;

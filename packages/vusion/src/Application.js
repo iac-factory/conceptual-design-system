@@ -38,7 +38,7 @@ const Application = () => {
             throw e;
             //            throw new Error(JSON.stringify(e, null, 4));
         });
-    }, []);
+    }, [ Authorization ]);
 
     const Login = Import(() => new Promise(async (resolve) => resolve(await import("./pages/Login"))));
     const GitHub = Import(async () => import("./pages/GitHub"));
@@ -62,6 +62,8 @@ const Application = () => {
     const Blog2 = Import(() => import("./pages/Blog-2"));
     const Blog3 = Import(() => import("./pages/Blog-3"));
 
+    const Documentation = Import(() => import("./pages/Documentation"));
+
     const Dashboard = {
         Index: Import(() => import("./pages/Dashboard/Pages/Index")),
         Mobile: Import(() => import("./pages/Dashboard/Pages/Mobile"))
@@ -79,7 +81,7 @@ const Application = () => {
                     </Row>
                     <Suspense fallback={ null }>
                         <Spinner timeout={ 1000 } description={ "" }>
-                            <Routes basename={ "/" }>
+                            <Routes>
                                 {/* Base Endpoint(s) */ }
 
                                 <Route path={ "/" } element={ (<Home/>) }/>
@@ -101,6 +103,8 @@ const Application = () => {
                                     } path={ "/login" }
                                 />
 
+                                <Route path={ "/documentation" } element={ (<Documentation/>) }/>
+
                                 { /* Authorized Endpoint(s) */ }
 
                                 <Route
@@ -117,7 +121,7 @@ const Application = () => {
                                     element={ (
                                         <Authorizer
                                             Page={ Modal }
-                                            Session={ true }
+                                            Session={ Authorization[0] }
                                             description={ "Loading Modal Page ..." }
                                         />
                                     ) } path={ "/modal" }

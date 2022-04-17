@@ -1,7 +1,7 @@
 import "./SCSS/Side-Navigation.scss";
 
 import {
-    SideNav, SideNavIcon,
+    SideNav,
     SideNavItems,
     SideNavLink,
     SideNavMenu,
@@ -23,11 +23,12 @@ import { useState } from "react";
 /*****
  *
  * @param href
+ * @param header
  * @returns {JSX.Element}
  * @constructor
  */
 
-const Item = (href, s) => {
+const Item = (href, header) => {
     return (
         <SideNavMenuItem href={ href }>
             {
@@ -35,22 +36,6 @@ const Item = (href, s) => {
             }
         </SideNavMenuItem>
     );
-};
-
-/*****
- *
- * @returns {{children}}
- * @constructor
- */
-
-const Items = (items = [ Item(location.href, "[Link]") ]) => {
-    const Collection = {
-        Items: []
-    };
-
-    items.forEach((Item, index) => Collection.Items.push((<Item key={ index }/>)));
-
-    return Collection.Items;
 };
 
 /*****

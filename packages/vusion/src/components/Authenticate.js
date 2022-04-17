@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Navigate } from "react-router-dom";
-
 import { Validator } from "./../components/Loader";
 
-const Request = require("axios");
+import { Navigate } from "react-router";
+
+import Loader from "./../components/Loader";
 
 import Forage from "localforage";
+
+const Request = require("axios");
 
 const NAME = "Nexus-UI";
 const DESCRIPTION = "Nexus Dashboard Login State";
@@ -160,35 +162,17 @@ const Authorizer = ({ Page, Session, description }) => {
             {
                 (Session === true)
                     ? (<Page description={ description }/>)
-                    : (<Navigate to={ "/login" }/>)
+                    : (
+                        <Loader description={"Validating Authorization ..."} children={
+                            (
+                                <Navigate to={ "/login" } replace={true}/>
+                            )
+                        } timeout={1000}>
+                        </Loader>
+                    )
             }
         </Validator>
     );
-};
-
-Authorizer.defaultProps = {
-    Session: null,
-    description: "Loading Page ..."
-};
-
-Authorizer.propTypes = {
-    /***
-     * @type {React.ExoticComponent}
-     * @requires {React.ExoticComponent}
-     */
-    Page: PropTypes.object.isRequired,
-
-    /***
-     * @type {Boolean|null}
-     * @requires {Boolean|null}
-     */
-    Session: PropTypes.oneOf([ true, false, null ]),
-
-    /***
-     * @type {String}
-     * @requires {String}
-     */
-    description: PropTypes.string
 };
 
 export {

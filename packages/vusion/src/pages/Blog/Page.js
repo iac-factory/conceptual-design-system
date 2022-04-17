@@ -1,19 +1,18 @@
-import PropTypes from "prop-types";
-
 import React, { useState, useEffect } from "react";
 
 import "./SCSS/Card.scss";
 
 import { default as List } from "./List";
 
+import Content from "./Test.mdx";
+
 export const Page = ({}) => {
     return (
-        <List rows={ 3 }/>
+        <>
+            <List rows={ 3 }/>
+            <Content/>
+        </>
     );
 };
-
-Page.defaultProps = {};
-
-Page.propTypes = {};
 
 export default Page;

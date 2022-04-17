@@ -1,13 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import Styles from "./SCSS/Index.module.scss";
 
 import {
     Button,
     Modal,
-    Column,
-    Row,
     SelectableTile,
     TextInput
 } from "@carbon/react";
@@ -40,56 +37,6 @@ export const Selectable = ({ props }) => {
         />
     );
 };
-
-Selectable.propTypes = {
-    /***
-     *
-     */
-
-    id: PropTypes.string,
-
-    /***
-     *
-     */
-
-    name: PropTypes.string,
-
-    /***
-     *
-     */
-
-    value: PropTypes.string,
-
-    /***
-     *
-     */
-
-    selected: PropTypes.string,
-
-    /***
-     *
-     */
-
-    onClick: PropTypes.func,
-
-    /***
-     *
-     */
-
-    disabled: PropTypes.bool,
-
-    /***
-     *
-     */
-
-    children: PropTypes.element
-};
-
-Selectable.defaultProps = {
-    ID: "",
-    Name: "Tiles"
-};
-
 /*****
  *
  * @param Children
@@ -100,7 +47,7 @@ Selectable.defaultProps = {
  *
  */
 
-export const Selectables = ({ Children = [ Properties() ] }) => {
+export const Selectables = ({ Children = [] }) => {
     const Components = [];
 
     Children.forEach(
@@ -228,14 +175,6 @@ export const Opener = ({ open, setOpen }) => {
             ) }
         </ModalStateManager>
     );
-};
-
-Component.defaultProps = {
-    width: "full"
-};
-
-Component.propTypes = {
-    width: PropTypes.oneOf([ "full", "normal", null ])
 };
 
 export default Component;

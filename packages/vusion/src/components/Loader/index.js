@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 import React, {
     useEffect, useState
 } from "react";
@@ -23,15 +21,6 @@ export const Loader = ({ description }) => (
     />
 );
 
-Loader.defaultProps = {
-    description: " "
-};
-
-Loader.propTypes = {
-    /*** @type {String} Loader's Target Component Description */
-    description: PropTypes.string.isRequired
-};
-
 /***
  *
  * @param children {JSX.Element}
@@ -44,12 +33,10 @@ Loader.propTypes = {
  *
  */
 
-const Component = ({ children, description, timeout }) => {
-    const $ = () => children;
-
-    if ( timeout === null ) return (<Loader description={ " " }/>);
-
+const Component = ({ children, description, timeout } = { description: "", timeout: 1500 }) => {
     const [ awaiting, setAwaiting ] = useState(null);
+
+    const $ = () => children;
 
     useEffect(() => {
         let $ = setTimeout(() => setAwaiting(false), timeout);
@@ -66,29 +53,9 @@ const Component = ({ children, description, timeout }) => {
          */
     }, [ awaiting ]);
 
+    if ( timeout === null ) return (<Loader description={ " " }/>);
+
     return (awaiting === false) ? (<$/>) : (<Loader description={ description }/>);
-};
-
-Component.propTypes = {
-    /***
-     * Target render component that replaces the loading component upon timout
-     */
-
-    children: PropTypes.element,
-
-    /***
-     * String describing the waiting event; description is displayed as text
-     * inline to the loading component
-     */
-
-    description: PropTypes.string,
-
-    /***
-     * Total timeout (ms) before children component renders and replaces the loading
-     * component
-     */
-
-    timeout: PropTypes.number
 };
 
 export default Component;
@@ -108,11 +75,9 @@ export default Component;
  */
 
 export const Validator = ({ children, description, timeout }) => {
-    const $ = () => children;
-
-    if ( timeout === null ) return (<Loader description={ " " }/>);
-
     const [ awaiting, setAwaiting ] = useState(null);
+
+    const $ = () => children;
 
     useEffect(() => {
         let $ = setTimeout(() => setAwaiting(false), timeout);
@@ -127,44 +92,7 @@ export const Validator = ({ children, description, timeout }) => {
          */
     }, [ awaiting ]);
 
+    if ( timeout === null ) return (<Loader description={ " " }/>);
+
     return (awaiting === false) ? (<$/>) : (<Loader description={ description }/>);
-};
-
-Validator.defaultProps = {
-    timeout: 1000,
-    description: "Validating Authorized Session ..."
-};
-
-Validator.propTypes = {
-    /***
-     * Target render component that replaces the loading component upon timout
-     *
-     * @type {JSX.Element}
-     * @requires {JSX.Element}
-     *
-     */
-
-    children: PropTypes.element.isRequired,
-
-    /***
-     * String describing the waiting event; description is displayed as text
-     * inline to the loading component
-     *
-     * @type {String}
-     * @default "Validating Authorized Session ..."
-     *
-     */
-
-    description: PropTypes.string,
-
-    /***
-     * Total timeout (ms) before children component renders and replaces the loading
-     * component
-     *
-     * @type {Number}
-     * @default 1000
-     *
-     */
-
-    timeout: PropTypes.number
 };

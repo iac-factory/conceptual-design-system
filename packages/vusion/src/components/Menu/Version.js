@@ -16,8 +16,7 @@ const Component = (props) => {
     const State = useState(false);
 
     const {
-        version,
-        ... Properties
+        version
     } = props;
 
     return (display === true)
@@ -25,6 +24,7 @@ const Component = (props) => {
             <div className={ Styles.tag }>
                 <span>
                     {
+                        // eslint-disable-next-line no-constant-condition
                         (process.env["NODE_ENV"] === "development" || true)
                             ? (
                                 <Tag

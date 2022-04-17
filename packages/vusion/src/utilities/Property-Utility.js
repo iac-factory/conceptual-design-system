@@ -183,7 +183,7 @@ export const getDeprecatedArgTypes = (deprecatedProps) => {
     const keys = Object.keys(deprecatedProps);
 
     return keys.reduce(
-        (acc, cur) => ((acc[cur] = { table: { disable: true } }), acc),
+        (acc, cur) => ((acc[cur] = { table: { disable: true } })),
         {}
     );
 };

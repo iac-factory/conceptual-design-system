@@ -20,23 +20,6 @@ const Component = () => {
     const [ page, setPage ] = useState(1);
     const [ awaiting, setAwaiting ] = useState(true);
 
-    useEffect(() => {
-        async function Await() {
-            const Waiter = new Promise((_) => setTimeout(
-                (_) => {
-                    console.debug("Updating Await := false");
-                    setAwaiting(false);
-                }
-            ), 1500);
-
-            await Waiter;
-        }
-
-        Await().finally(() => {
-            /* ... */
-        });
-    }, []);
-
     const Handler = API.Awaitable();
 
     const Headers = React.useMemo(() => [
@@ -98,12 +81,29 @@ const Component = () => {
     const Awaitable = () => {
         if ( awaiting === true ) return Component();
 
-        const Data = React.useMemo(() => Handler.Response["Data"]["Projects"]) || [];
+        const Data = Handler.Response["Data"]["Projects"] ?? [];
 
         return (
             <Tabular Headers={ Headers } Data={ Data } State={ setAwaiting } Pages={ Pages }/>
         );
     };
+
+    useEffect(() => {
+        async function Await() {
+            const Waiter = new Promise(((resolve) => setTimeout(
+                () => {
+                    console.debug("Updating Await := false");
+                    setAwaiting(false);
+                    resolve();
+                }, 1500)));
+
+            await Waiter;
+        }
+
+        Await().finally(() => {
+            /* ... */
+        });
+    }, []);
 
     return (
         Handler.Waiter === false

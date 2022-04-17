@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { default as settings } from "./../../settings/Configuration.js";
 
@@ -44,28 +43,4 @@ export const APIKeyDownloader = ({
             </p>
         </div>
     );
-};
-
-APIKeyDownloader.displayName = componentName;
-APIKeyDownloader.propTypes = {
-    /**
-     * the api key that's displayed to the user when a request to create is fulfilled.
-     */
-    apiKey: PropTypes.string.isRequired,
-    /**
-     * body content for the downloader
-     */
-    body: PropTypes.string.isRequired,
-    /**
-     * designates the name of downloadable json file with the key. if not specified will default to 'apikey'
-     */
-    fileName: PropTypes.string.isRequired,
-    /**
-     * designates the file type for the downloadable key
-     */
-    fileType: PropTypes.oneOf([ "txt", "json" ]).isRequired,
-    /**
-     * anchor text for the download link
-     */
-    linkText: PropTypes.string.isRequired
 };

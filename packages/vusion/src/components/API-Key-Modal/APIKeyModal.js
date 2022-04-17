@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, forwardRef } from "react";
-import PropTypes from "prop-types";
 import cx from "classnames";
 
 import {
@@ -92,7 +91,7 @@ export const APIKeyModal = forwardRef(
         const hasNextStep = hasSteps && currentStep < customSteps.length - 1;
         const hasPreviousStep = hasSteps && currentStep !== 0;
         const copyButtonProps = {
-            renderIcon: Copy16,
+            renderIcon: Copy,
             iconDescription: copyIconDescription,
             ref: copyRef
         };
@@ -258,7 +257,7 @@ export const APIKeyModal = forwardRef(
                             { (copyError || error) && (
                                 <div className={ `${ blockClass }__messaging` }>
                                     <div className={ `${ blockClass }__error-icon` }>
-                                        <ErrorFilled16/>
+                                        <ErrorFilled/>
                                     </div>
                                     <p className={ `${ blockClass }__messaging-text` }>
                                         { copyError ? copyErrorText : errorText }
@@ -267,7 +266,7 @@ export const APIKeyModal = forwardRef(
                             ) }
                             { (apiKeyLoaded) && (
                                 <div className={ `${ blockClass }__messaging` }>
-                                    <InformationFilled16/>
+                                    <InformationFilled/>
                                     { hasDownloadLink ? (
                                         <APIKeyDownloader
                                             apiKey={ apiKey }
@@ -315,256 +314,5 @@ const editRequiredProps = (type) =>
     isRequiredIf(type, ({ editing }) => editing);
 
 const downloadRequiredProps = (type) => isRequiredIf(type, ({ hasDownloadLink }) => hasDownloadLink);
-
-APIKeyModal.propTypes = {
-    /**
-     * the api key that's displayed to the user when a request to create is fulfilled.
-     */
-    apiKey: PropTypes.string,
-
-    /**
-     * label for the text input that holds the api key.
-     */
-    apiKeyLabel: PropTypes.string,
-
-    /**
-     * the name of the api key. should only be supplied in edit mode.
-     */
-    apiKeyName: PropTypes.string,
-
-    /**
-     * body content for the modal
-     */
-    body: PropTypes.string,
-
-    /**
-     * optional class name
-     */
-    className: PropTypes.string,
-
-    /**
-     * text for the close button
-     */
-    closeButtonText: PropTypes.string,
-
-    /**
-     * text for the copy button
-     */
-    copyButtonText: PropTypes.string,
-
-    /**
-     * Error message for when the copy function fails
-     */
-    copyErrorText: PropTypes.string,
-
-    /**
-     * text description for the copy button icon
-     */
-    copyIconDescription: PropTypes.string,
-
-    /**
-     * if you need more options for key creation beyond just the name use custom steps to obtain whatever data is required.
-     */
-    customSteps: PropTypes.arrayOf(
-        PropTypes.shape({
-            /**
-             * designates if the step has passed whatever validation rules are in place.
-             */
-            valid: PropTypes.bool,
-            /**
-             * designates content is the JSX that holds whatever inputs you need
-             */
-            content: PropTypes.node,
-            /**
-             * designates the title that's displayed at the top of the modal for each step
-             */
-            title: PropTypes.string
-        })
-    ),
-
-    /**
-     * the content that appears that indicates the key is downloadable
-     */
-    downloadBodyText: downloadRequiredProps(PropTypes.string),
-
-    /**
-     * designates the name of downloadable json file with the key. if not specified will default to 'apikey'
-     */
-    downloadFileName: downloadRequiredProps(PropTypes.string),
-
-    /**
-     * designates the file type for the downloadable key
-     */
-    downloadFileType: downloadRequiredProps(PropTypes.oneOf([ "txt", "json" ])),
-
-    /**
-     * anchor text for the download link
-     */
-    downloadLinkText: downloadRequiredProps(PropTypes.string),
-
-    /**
-     * text for the edit button
-     */
-    editButtonText: editRequiredProps(PropTypes.string),
-
-    /**
-     * designates if the edit request was successful
-     */
-    editSuccess: editRequiredProps(PropTypes.bool),
-
-    /**
-     * title for a successful edit
-     */
-    editSuccessTitle: editRequiredProps(PropTypes.string),
-
-    /**
-     * designates if the modal is in the edit mode
-     */
-    editing: PropTypes.bool,
-
-    /**
-     * designates if an error has occurred in a request
-     */
-    error: PropTypes.bool,
-
-    /**
-     * text to display if an error has occurred
-     */
-    errorText: PropTypes.string,
-
-    /**
-     * default primary button text for modal in assumed default mode create or generate.
-     * in create mode this is the button text prior to supplying an api key, which then
-     * uses copyButtonText
-     */
-    generateButtonText: PropTypes.string,
-
-    /**
-     * content to display if generate request was successful
-     */
-    generateSuccessBody: PropTypes.node,
-
-    /**
-     * title for a successful key generation
-     */
-    generateSuccessTitle: PropTypes.string,
-
-    /**
-     * default title for the modal in generate key mode
-     */
-    generateTitle: PropTypes.string,
-
-    /**
-     * designates if the api input has the visibility toggle enabled
-     */
-    hasAPIKeyVisibilityToggle: PropTypes.bool,
-
-    /**
-     * designates if user is able to download the api key
-     */
-    hasDownloadLink: PropTypes.bool,
-
-    /**
-     * label text that's displayed when hovering over visibility toggler to hide key
-     */
-    hideAPIKeyLabel: PropTypes.string,
-
-    /**
-     * designates if the modal is in a loading state via a request or some other in progress operation
-     */
-    loading: PropTypes.bool,
-
-    /**
-     * text that displays while modal is in the loading state
-     */
-    loadingText: PropTypes.string,
-
-    /**
-     * general label text for modal
-     */
-    modalLabel: PropTypes.string,
-
-    /**
-     * helper text for name input
-     */
-    nameHelperText: PropTypes.string,
-
-    /**
-     * label for api key name input
-     */
-    nameLabel: PropTypes.string,
-
-    /**
-     * placeholder text for api key name input
-     */
-    namePlaceholder: PropTypes.string,
-
-    /**
-     * designates if a name is required or not for key generation. NOTE- if using custom steps set this to false since you will be using your own validation
-     */
-    nameRequired: PropTypes.bool,
-
-    /**
-     * text that displays in the primary button when using custom steps to indicate to the user that there is a next step
-     */
-    nextStepButtonText: customStepsRequiredProps(PropTypes.string),
-
-    /**
-     * handler for on modal close
-     */
-    onClose: PropTypes.func,
-
-    /**
-     * Optional callback if you want to use your own copy function instead of the build in one
-     * onCopy(apiKey)
-     */
-    onCopy: PropTypes.func,
-
-    /**
-     * handler for api key edit
-     */
-    onRequestEdit: PropTypes.func,
-
-    /**
-     * handler for api key generation
-     */
-    onRequestGenerate: PropTypes.func,
-
-    /**
-     * designates if modal is open or closed
-     */
-    open: PropTypes.bool.isRequired,
-
-    /**
-     * text that displays in the secondary button when using custom steps to indicate to the user that there is a previous step
-     */
-    previousStepButtonText: customStepsRequiredProps(PropTypes.string),
-
-    /**
-     * label text that's displayed when hovering over visibility toggler to show key
-     */
-    showAPIKeyLabel: PropTypes.string,
-
-    /**
-     * @type {Boolean} Prevent Modal Close upon Click-Outside
-     */
-    preventCloseOnClickOutside: PropTypes.bool
-};
-
-APIKeyModal.defaultProps = {
-    apiKeyName: "",
-    customSteps: [],
-    error: false,
-    hasAPIKeyVisibilityToggle: false,
-    hasDownloadLink: false,
-    loading: false,
-    nameRequired: false,
-    open: false,
-
-    // ...
-
-    onRequestGenerate: () => console.log("[Log]", "Generate Button Click Event"),
-    onClose: () => console.log("[Log]", "Undefined Close Click Event")
-};
 
 APIKeyModal.displayName = componentName;

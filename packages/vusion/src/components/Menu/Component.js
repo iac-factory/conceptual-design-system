@@ -43,7 +43,8 @@ import {
     UserData
 } from "@carbon/icons-react";
 
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router";
 
 import { default as Mode } from "./Mode-Tagger";
 import { default as Version } from "./Version.js";
@@ -161,6 +162,10 @@ const Component = ({ Authorizer }) => {
                             Nexus
                         </HeaderName>
                         <HeaderNavigation aria-label="Nexus">
+                            <HeaderMenuItem element={ Link } to={ "/documentation" } isCurrentPage={ Active("documentation") } onClick={ () => navigation("/documentation") }>
+                                Documentation
+                            </HeaderMenuItem>
+                            <Splitter/>
                             <HeaderMenuItem element={ Link } to={ "/blog" } isCurrentPage={ Active("blog") } onClick={ () => navigation("/blog") }>
                                 Blog
                             </HeaderMenuItem>

@@ -1,9 +1,7 @@
 import "./settings/index.js";
 
-import ReactDOM from "react-dom";
 import React, { lazy as Import, Suspense } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import {Outlet} from "react-router";
 import { createRoot } from "react-dom/client";
 
 import "./index.scss";
@@ -52,13 +50,3 @@ const DOM = (Child) => {
 const $ =createRoot(document.getElementById("Application"));
 
 $.render(<DOM/>);
-
-//ReactDOM.render((
-//    <DOM/>
-//), document.getElementById("Application"));
-
-//(process.env.NODE_ENV === "production")
-//    ? import("./Worker.js").then((Module) => Module.register())
-//    : import("./Worker.js").then((Module) => Module.unregister());
-//
-//(process.env.NODE_ENV !== "production") && console.debug("[Debug]", process.env);

@@ -86,9 +86,6 @@ const Card = (
     );
 };
 
-/** Card child elements. */
-const children = oneOfType([ array, element, string ]);
-
 //Card.defaultProps = {
 //    body: null,
 //    children: null,

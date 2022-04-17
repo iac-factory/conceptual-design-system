@@ -23,7 +23,7 @@ import { default as Loader } from "./../../../components/Loader";
  * @constructor
  *
  */
-const Component = ({ timeout, description }, Properties = { ... props }) => {
+const Component = ({ timeout, description }, Properties = {}) => {
     console.debug("[Debug] Unassigned Properties", Properties);
 
     const Page = Import(() => import("./Page"));
@@ -39,25 +39,6 @@ const Component = ({ timeout, description }, Properties = { ... props }) => {
             </Column>
         </Grid>
     );
-};
-
-Component.defaultProps = {
-    timeout: 1250,
-    description: null
-};
-
-Component.propTypes = {
-    /**
-     * Forced Delay during Transition (Units in ms)
-     */
-
-    timeout: PropTypes.number.isRequired,
-
-    /***
-     * Loading Screen Context
-     */
-
-    description: PropTypes.string.isRequired
 };
 
 export default Component;

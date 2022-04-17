@@ -1,6 +1,5 @@
-import { Checkmark } from "@carbon/icons-react";
+import {DataCheck} from "@carbon/icons-react";
 
-import { oneOf, string } from "prop-types";
 import React, { Component } from "react";
 
 import Styles from "./SCSS/Index.module.scss";
@@ -16,30 +15,7 @@ const STATUS = [ "complete", "error", "info", "success", "unknown", "warning" ];
  * Status icon component.
  */
 class Status extends Component {
-    static propTypes = {
-        /** @type {string} Class name. */
-        className: string,
-
-        /** @type {string} icon aria label. */
-        iconDescription: string,
-
-        /** @type {string} Message. */
-        message: string,
-
-        /** @type {string} Size. */
-        size: oneOf(SIZE),
-
-        /** @type {string} Status. */
-        status: oneOf(STATUS)
-    };
-
-    static defaultProps = {
-        className: null,
-        message: null,
-        size: defaultSize,
-        status: undefined,
-        iconDescription: null
-    };
+    status;
 
     static getDerivedStateFromProps({ status }, state) {
         return status && state.status !== status
@@ -50,7 +26,7 @@ class Status extends Component {
     }
 
     state = {
-        status: this.props.status
+        status: this.status
     };
 
     render() {
@@ -66,7 +42,7 @@ class Status extends Component {
                         aria-label={
                             iconDescription && iconDescription.length ? iconDescription : null
                         }
-                        renderIcon={ Checkmark20 }
+                        renderIcon={ DataCheck }
                     />
                 );
                 break;
