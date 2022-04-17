@@ -1,10 +1,7 @@
-import { Suspense } from "react";
-
 import Styles from "./index.module.scss";
 
-import {
-    Grid, Column
-} from "@carbon/react";
+import { Column } from "@carbon/react";
+import { Grid } from "@carbon/react";
 
 import { NPM } from "./MDX";
 

@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 const Content = ({ children }) => {
     return (
-        <Suspense fallback={null}>
+        <Suspense fallback={ null }>
             <div className={ Styles.content }>
                 {
                     children
